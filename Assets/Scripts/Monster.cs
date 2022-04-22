@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Monster : MonoBehaviour, IPointerClickHandler
+public class GameUI : MonoBehaviour
 {
     [SerializeField]
-    public Image m_Monster;
+    Text m_DmgText;
 
     [SerializeField]
-    public Text m_Health;
+    Text m_SpeDmgText;
 
-    [SerializeField]
-    public Text m_playerDmg;
+    int dmg;
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    int speDmg;
+
+    public void OnUpgradeDmgClick()
     {
-
-        int health = int.Parse(m_Health.text) - int.Parse(m_playerDmg.text);
-        m_Health.text = health.ToString();
-        Debug.Log("Pointer enter");
+        dmg = int.Parse(m_DmgText.text);
+        dmg++;
+        m_DmgText.text = dmg.ToString();
     }
 
+    public void OnUpgradeSpeDmgClick()
+    {
+        dmg = int.Parse(m_SpeDmgText.text);
+        speDmg++;
+        m_SpeDmgText.text = speDmg.ToString();
+    }
+
+    public void OnSpecialClick()
+    {
+
+    }
 }
